@@ -46,12 +46,8 @@ typedef int pid_t;
 #  error PHP 5.6.0 or later is required in order to build the driver
 #endif
 
-#if HAVE_SPL
-#  include <ext/spl/spl_iterators.h>
-#  include <ext/spl/spl_exceptions.h>
-#else
-#  error SPL must be enabled in order to build the driver
-#endif
+#include <ext/spl/spl_iterators.h>
+#include <ext/spl/spl_exceptions.h>
 
 #include "version.h"
 
@@ -121,6 +117,9 @@ typedef zend_object php5to7_zend_object_free;
 typedef zval **php5to7_zval_gc;
 typedef zval *php5to7_dtor;
 typedef size_t php5to7_size;
+#if ((PHP_MAJOR_VERSION == 7 && PHP_MINOR_VERSION >= 4) || PHP_MAJOR_VERSION > 7)
+  typedef unsigned long ulong;
+#endif
 
 static inline int
 php5to7_string_compare(php5to7_string s1, php5to7_string s2)
