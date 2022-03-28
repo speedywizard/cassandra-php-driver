@@ -3,7 +3,7 @@ WORKDIR /tmp/cassandra-php-driver
 
 RUN apt update -y \
  && apt install python3 pip cmake unzip mlocate build-essential git libuv1-dev libssl-dev libgmp-dev openssl zlib1g-dev libpcre3-dev openjdk-11-jre openjdk-11-jdk -y \
- && pip install git+git://github.com/riptano/ccm.git@master
+ && pip install git+https://github.com/riptano/ccm.git@master
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin
 RUN docker-php-source extract \
