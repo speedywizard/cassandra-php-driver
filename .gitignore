@@ -6,6 +6,7 @@
 /docs/
 /vendor/
 /venv/
+.vs
 
 
 # Files to ignore

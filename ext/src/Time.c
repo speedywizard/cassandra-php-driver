@@ -159,11 +159,7 @@ PHP_METHOD(Time, fromDateTime)
   }
 
   zend_call_method_with_0_params(
-#if PHP_MAJOR_VERSION >= 8
                                  Z_OBJ_P(zdatetime),
-#else
-                                 PHP5TO7_ZVAL_MAYBE_ADDR_OF(zdatetime),
-#endif
                                  php_date_get_date_ce(),
                                  NULL,
                                  "gettimestamp",

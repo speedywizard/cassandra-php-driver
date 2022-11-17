@@ -83,7 +83,7 @@ if (PHP_CASSANDRA != "no") {
       AC_DEFINE("HAVE_CASSANDRA_CPP_DRIVER", 1, "Have DataStax C/C++ driver");
       AC_DEFINE("HAVE_LIBUV", 1, "Have libuv");
 
-      if (CHECK_LIB("libeay32.lib", "cassandra") && CHECK_LIB("ssleay32.lib", "cassandra")) {
+      if ((CHECK_LIB("libeay32.lib", "cassandra") && CHECK_LIB("ssleay32.lib", "cassandra")) || (CHECK_LIB("libssl.lib", "cassandra") && CHECK_LIB("libcrypto.lib", "cassandra"))) {
         if (!CHECK_LIB("zlib_a.lib", "cassandra")) {
           WARNING("Unable to Locate zlib Library: Cassandra extension may not link correctly");
         }
